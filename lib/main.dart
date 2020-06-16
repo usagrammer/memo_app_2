@@ -10,6 +10,8 @@ import 'views/partials/footer.dart';
 import 'views/posts/index.dart';
 import 'views/posts/new.dart';
 
+import 'views/settings/index.dart';
+
 void main() => runApp(
     Init()
 );
@@ -33,6 +35,7 @@ class Base extends StatelessWidget {
   var routes = [
     Index(),
     New(),
+    SettingsIndex(),
   ];
 
   @override

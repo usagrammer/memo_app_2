@@ -19,13 +19,16 @@ class Footer extends StatelessWidget {
       items:[
         BottomNavigationBarItem(
           icon: Icon(Icons.home),
-          title: Text("x")
+          title: Text("index")
           ),
           BottomNavigationBarItem(
-          icon: Icon
-          (Icons.home),
-            title: Text("hoge")
-        )
+          icon: Icon(Icons.note_add),
+            title: Text("new")
+        ),
+        BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            title: Text("setting")
+        ),
       ]
     );
   }
