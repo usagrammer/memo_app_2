@@ -27,21 +27,25 @@ class Index extends StatelessWidget {
             children: <Widget>[
               Flexible(
                 child: new TextField(
-                  decoration: InputDecoration(
-                    border: OutlineInputBorder(),
-                    contentPadding: EdgeInsets.all(10),
-                    hintText: '検索',
-                  ),
-                  enabled: true,
-                  // 入力数
-                  maxLength: 10,
-                  maxLengthEnforced: false,
-                  style: TextStyle(color: Colors.red),
-                  obscureText: false,
-                  maxLines: 1,
-                  //パスワード
-//      onChanged: _handleText,
-                ),
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      contentPadding: EdgeInsets.all(10),
+                      hintText: '検索',
+                    ),
+                    enabled: true,
+                    // 入力数
+                    maxLength: 10,
+                    maxLengthEnforced: false,
+                    style: TextStyle(color: Colors.red),
+                    obscureText: false,
+                    maxLines: 1,
+                    //パスワード
+                    onChanged: (text) {
+                      _searchWord = context
+                          .read<PostsIndexStateNotifier>()
+                          .changeWord(text);
+                      print("changed:${_searchWord}");
+                    }),
               ),
               IconButton(
 //                onPressed: _handlePressed,
@@ -52,18 +56,33 @@ class Index extends StatelessWidget {
           ),
         ),
         Flexible(
-            child: StreamBuilder(
-          stream: _searchWord,
-          builder: (BuildContext context, AsyncSnapshot<String> snapShot) {
-            return ListView(
-              padding: const EdgeInsets.all(8),
-              children: <Widget>[
-                MemoTile("1hoge", "diary", ["hoge", "fuga"], Icon(Icons.menu)),
-              ],
-            );
-          },
-        )),
+          child: buildPosts(_searchWord),
+        )
       ],
+    );
+  }
+}
+
+class buildPosts extends StatelessWidget {
+  final String searchWord;
+  buildPosts(this.searchWord);
+
+  List posts = ["hoge", "fuga", "bar"];
+
+  Widget build(BuildContext context) {
+    List hittedPosts =
+        posts.where((post) => post.contains(searchWord)).toList();
+    print("search! by ${searchWord}");
+    print(posts);
+    print(hittedPosts);
+    print("/search!");
+    return ListView.builder(
+      itemCount: hittedPosts.length,
+      itemBuilder: (context, int index) {
+        return MemoTile(
+            hittedPosts[index], "bar", ["hoge", "fuga"], Icon(Icons.menu));
+      },
+      padding: const EdgeInsets.all(8),
     );
   }
 }
