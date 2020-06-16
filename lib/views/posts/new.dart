@@ -5,24 +5,153 @@ import 'package:provider/provider.dart';
 
 import 'package:memoapp2/Controllers/footer_state.dart';
 
-class New extends StatelessWidget {
+class PostsNew extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     print("<New>");
     print(context);
     print("</New>");
-    return Column(
-      children: <Widget>[
-        Container(height: 20.0, width: double.infinity, color: Colors.red),
-        Container(height: 80.0, width: double.infinity, color: Colors.blue),
-        Row(
-          children: <Widget>[
-            Container(height: 80.0, width: 40.0, color: Colors.green),
-            Container(height: 80.0, width: 40.0, color: Colors.pink),
-          ],
-        )
-      ],
+
+    String title = "";
+    String content = "";
+    int category_id = 0;
+    List categories = ["うさぎ", "プログラミング"];
+    List postOfTags = ["タグ一覧", "ほげ"];
+
+    return Scaffold(
+      appBar: AppBar(
+          leading: IconButton(
+            icon: Icon(
+              Icons.arrow_back_ios,
+              color: Colors.white,
+            ),
+          ),
+          actions: [Icon(AntDesign.stepforward)],
+          title: Text('新規投稿')),
+      body: Column(
+        children: <Widget>[
+          TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                contentPadding: EdgeInsets.all(10),
+                hintText: 'タイトル',
+              ),
+              enabled: true,
+              // 入力数
+              maxLength: 10,
+              maxLengthEnforced: false,
+              style: TextStyle(color: Colors.red),
+              obscureText: false,
+              maxLines: 1,
+              //パスワード
+              onChanged: (text) {
+                title = text;
+                print("title_changed:${title}");
+              }),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: DropdownButton<int>(
+                  value: category_id,
+                  onChanged: (int) {
+                    category_id = int;
+                    print("changed_category_id:${category_id}");
+                  },
+                  items: categories.map((category) {
+                    print("build_Cateogyr");
+                    print(category);
+                    return DropdownMenuItem<int>(
+                      value: categories.indexOf(category),
+                      child: Text(category),
+                    );
+                  }).toList(),
+                ),
+              ),
+              Expanded(
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    contentPadding: EdgeInsets.all(10),
+                    hintText: 'カテゴリを追加',
+                    suffixIcon: IconButton(
+                        icon: Icon(Icons.add_circle),
+                        onPressed: () {
+                          debugPrint('222');
+                        }),
+                  ),
+                  enabled: true,
+                  // 入力数
+                  maxLength: 10,
+                  maxLengthEnforced: false,
+                  style: TextStyle(color: Colors.red),
+                  obscureText: false,
+                  maxLines: 1,
+                ),
+              ),
+            ],
+          ),
+          Row(
+            children: <Widget>[
+              Expanded(
+                child: DropdownButton<int>(
+                  value: category_id,
+                  onChanged: (int) {
+                    category_id = int;
+                    print("changed_category_id:${category_id}");
+                  },
+                  items: postOfTags.map((tag) {
+                    print("build_postOftags");
+                    print(tag);
+                    return DropdownMenuItem<int>(
+                      value: postOfTags.indexOf(tag),
+                      child: Text(tag),
+                    );
+                  }).toList(),
+                ),
+              ),
+              Expanded(
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    contentPadding: EdgeInsets.all(10),
+                    hintText: 'タグを追加',
+                    suffixIcon: IconButton(
+                        icon: Icon(Icons.add_circle),
+                        onPressed: () {
+                          debugPrint('222');
+                        }),
+                  ),
+                  enabled: true,
+                  // 入力数
+                  maxLength: 10,
+                  maxLengthEnforced: false,
+                  style: TextStyle(color: Colors.red),
+                  obscureText: false,
+                  maxLines: 1,
+                ),
+              ),
+            ],
+          ),
+          TextField(
+              decoration: InputDecoration(
+                border: OutlineInputBorder(),
+                contentPadding: EdgeInsets.all(10),
+                hintText: '本文',
+              ),
+              enabled: true,
+              // 入力数
+              maxLength: 10,
+              maxLengthEnforced: false,
+              style: TextStyle(color: Colors.red),
+              obscureText: false,
+              maxLines: 10,
+              //パスワード
+              onChanged: (text) {
+                content = text;
+                print("content_changed:${content}");
+              }),
+        ],
+      ),
     );
-//    return Text(context.select<FooterState, int>((state) => state.count).toString());
   }
 }

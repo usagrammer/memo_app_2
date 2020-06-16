@@ -21,22 +21,26 @@ class Init extends StatelessWidget {
     print("<Init>");
     print(context);
     return MaterialApp(
+        routes: <String, WidgetBuilder>{
+          '/home': (BuildContext context) => new Base(),
+          '/posts/new': (BuildContext context) => new PostsNew()
+        },
         home: MultiProvider(
-      providers: [
-        StateNotifierProvider<FooterStateNotifier, FooterState>(
-            create: (_) => FooterStateNotifier()),
-        StateNotifierProvider<PostsIndexStateNotifier, PostsIndexState>(
-            create: (_) => PostsIndexStateNotifier()),
-      ],
-      child: Base(),
-    ));
+          providers: [
+            StateNotifierProvider<FooterStateNotifier, FooterState>(
+                create: (_) => FooterStateNotifier()),
+            StateNotifierProvider<PostsIndexStateNotifier, PostsIndexState>(
+                create: (_) => PostsIndexStateNotifier()),
+          ],
+          child: Base(),
+        ));
   }
 }
 
 class Base extends StatelessWidget {
   var routes = [
     Index(),
-    New(),
+    PostsNew(),
     SettingsIndex(),
   ];
 
@@ -50,6 +54,7 @@ class Base extends StatelessWidget {
       ),
       bottomNavigationBar: Footer(),
       floatingActionButton: FloatingActionButton.extended(
+        onPressed: () => Navigator.of(context).pushNamed("/posts/new"),
         label: Text("new"),
         icon: Icon(Icons.add),
       ),
