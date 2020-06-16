@@ -8,6 +8,7 @@ import 'views/partials/header.dart';
 import 'views/partials/footer.dart';
 
 import 'views/posts/index.dart';
+import 'views/posts/new.dart';
 
 void main() => runApp(
     Init()
@@ -29,6 +30,11 @@ class Init extends StatelessWidget {
 class Base extends StatelessWidget {
 //  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
 
+  var routes = [
+    Index(),
+    New(),
+  ];
+
   @override
   Widget build(BuildContext context) {
     print("<Base>");
@@ -37,7 +43,10 @@ class Base extends StatelessWidget {
     return Scaffold(
 //      key: _scaffoldKey,
       appBar: Header(),
-      body: Index(),
+      body: IndexedStack(
+        index: context.select<FooterState, int>((state) => state.selectedIndex),
+        children: routes,
+      ),
       bottomNavigationBar:   Footer(),
       floatingActionButton: FloatingActionButton.extended(
         label: Text("aaa"),

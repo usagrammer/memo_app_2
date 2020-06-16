@@ -5,13 +5,13 @@ import 'package:provider/provider.dart';
 
 import 'package:memoapp2/Controllers/footer_state.dart';
 
-class Index extends StatelessWidget {
+class New extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    print("<Index>");
+    print("<New>");
     print(context);
-    print("</Index>");
-    return Text("index");
+    print("</New>");
+    return Text("new");
 //    return Text(context.select<FooterState, int>((state) => state.count).toString());
   }
 }
