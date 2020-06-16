@@ -29,22 +29,15 @@ class PostsNew extends StatelessWidget {
         nextFocus: true,
         actions: [
           KeyboardAction(focusNode: _ContentSubmit, toolbarButtons: [
-            //button 1
             (node) {
               return GestureDetector(
-                onTap: () => node.unfocus(),
-                child: Container(
-                  color: Colors.white,
+                onTap: () => {node.unfocus()},
+                child: Padding(
                   padding: EdgeInsets.all(8.0),
-                  child: IconButton(
-                      icon: Icon(Icons.add_circle),
-                      onPressed: () {
-                        debugPrint('222');
-                        FocusScope.of(context).unfocus();
-                      }),
+                  child: Icon(Icons.close),
                 ),
               );
-            },
+            }
           ]),
         ],
       );
