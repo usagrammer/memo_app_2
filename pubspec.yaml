@@ -34,6 +34,7 @@ dependencies:
   google_sign_in: ^4.0.7
   flutter_markdown:
   flutter_secure_storage:
+  keyboard_actions: "^3.2.0"
 
 
   # The following adds the Cupertino Icons font to your application.
