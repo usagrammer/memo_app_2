@@ -19,6 +19,7 @@ class PostsNew extends StatelessWidget {
     List postOfTags = ["タグ一覧", "ほげ"];
 
     return Scaffold(
+      resizeToAvoidBottomPadding: false,
       appBar: AppBar(
           leading: IconButton(
             icon: Icon(
@@ -26,7 +27,14 @@ class PostsNew extends StatelessWidget {
               color: Colors.white,
             ),
           ),
-          actions: [Icon(AntDesign.stepforward)],
+          actions: [
+            IconButton(
+              icon: Icon(
+                Icons.file_download,
+                color: Colors.white,
+              ),
+            )
+          ],
           title: Text('新規投稿')),
       body: Column(
         children: <Widget>[
