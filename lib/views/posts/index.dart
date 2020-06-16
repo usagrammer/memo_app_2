@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+
+import 'package:memoapp2/Controllers/posts_index_state.dart';
 
 class Index extends StatelessWidget {
   @override
@@ -9,6 +12,10 @@ class Index extends StatelessWidget {
     print("<Index>");
     print(context);
     print("</Index>");
+
+    String _searchWord =
+        context.select<PostsIndexState, String>((state) => state.searchWord);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: <Widget>[
@@ -45,21 +52,17 @@ class Index extends StatelessWidget {
           ),
         ),
         Flexible(
-          child: ListView(
-            padding: const EdgeInsets.all(8),
-            children: <Widget>[
-              MemoTile("1hoge", "diary", ["hoge", "fuga"], Icon(Icons.menu)),
-              MemoTile("h2oge", "diary", ["hoge", "fuga"], Icon(Icons.menu)),
-              MemoTile("hoge", "diary", ["hoge", "fuga"], Icon(Icons.menu)),
-              MemoTile("hoge", "diary", ["hoge", "fuga"], Icon(Icons.menu)),
-              MemoTile("hoge", "diary", ["hoge", "fuga"], Icon(Icons.menu)),
-              MemoTile("hoge", "diary", ["hoge", "fuga"], Icon(Icons.menu)),
-              MemoTile("hoge", "diary", ["hoge", "fuga"], Icon(Icons.menu)),
-              MemoTile("hoge", "diary", ["hoge", "fuga"], Icon(Icons.menu)),
-              MemoTile("hoge", "diary", ["hoge", "fuga"], Icon(Icons.menu)),
-            ],
-          ),
-        ),
+            child: StreamBuilder(
+          stream: _searchWord,
+          builder: (BuildContext context, AsyncSnapshot<String> snapShot) {
+            return ListView(
+              padding: const EdgeInsets.all(8),
+              children: <Widget>[
+                MemoTile("1hoge", "diary", ["hoge", "fuga"], Icon(Icons.menu)),
+              ],
+            );
+          },
+        )),
       ],
     );
   }
