@@ -52,7 +52,7 @@ class Base extends StatelessWidget {
       ),
       bottomNavigationBar:   Footer(),
       floatingActionButton: FloatingActionButton.extended(
-        label: Text("aaa"),
+        label: Text("new"),
         icon: Icon(Icons.add),
       ),
     );

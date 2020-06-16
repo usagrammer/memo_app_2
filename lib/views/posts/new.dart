@@ -11,7 +11,18 @@ class New extends StatelessWidget {
     print("<New>");
     print(context);
     print("</New>");
-    return Text("new");
+    return Column(
+      children: <Widget>[
+        Container(height: 20.0, width: double.infinity, color: Colors.red),
+        Container(height: 80.0, width: double.infinity, color: Colors.blue),
+        Row(
+          children: <Widget>[
+            Container(height: 80.0, width: 40.0, color: Colors.green),
+            Container(height: 80.0, width: 40.0, color: Colors.pink),
+          ],
+        )
+      ],
+    );
 //    return Text(context.select<FooterState, int>((state) => state.count).toString());
   }
 }
