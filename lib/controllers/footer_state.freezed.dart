@@ -15,9 +15,9 @@ FooterState _$FooterStateFromJson(Map<String, dynamic> json) {
 class _$FooterStateTearOff {
   const _$FooterStateTearOff();
 
-  _FooterState call({int count = 0}) {
+  _FooterState call({int selectedIndex = 1}) {
     return _FooterState(
-      count: count,
+      selectedIndex: selectedIndex,
     );
   }
 }
@@ -26,7 +26,7 @@ class _$FooterStateTearOff {
 const $FooterState = _$FooterStateTearOff();
 
 mixin _$FooterState {
-  int get count;
+  int get selectedIndex;
 
   Map<String, dynamic> toJson();
   $FooterStateCopyWith<FooterState> get copyWith;
@@ -36,7 +36,7 @@ abstract class $FooterStateCopyWith<$Res> {
   factory $FooterStateCopyWith(
           FooterState value, $Res Function(FooterState) then) =
       _$FooterStateCopyWithImpl<$Res>;
-  $Res call({int count});
+  $Res call({int selectedIndex});
 }
 
 class _$FooterStateCopyWithImpl<$Res> implements $FooterStateCopyWith<$Res> {
@@ -48,10 +48,12 @@ class _$FooterStateCopyWithImpl<$Res> implements $FooterStateCopyWith<$Res> {
 
   @override
   $Res call({
-    Object count = freezed,
+    Object selectedIndex = freezed,
   }) {
     return _then(_value.copyWith(
-      count: count == freezed ? _value.count : count as int,
+      selectedIndex: selectedIndex == freezed
+          ? _value.selectedIndex
+          : selectedIndex as int,
     ));
   }
 }
@@ -62,7 +64,7 @@ abstract class _$FooterStateCopyWith<$Res>
           _FooterState value, $Res Function(_FooterState) then) =
       __$FooterStateCopyWithImpl<$Res>;
   @override
-  $Res call({int count});
+  $Res call({int selectedIndex});
 }
 
 class __$FooterStateCopyWithImpl<$Res> extends _$FooterStateCopyWithImpl<$Res>
@@ -76,28 +78,31 @@ class __$FooterStateCopyWithImpl<$Res> extends _$FooterStateCopyWithImpl<$Res>
 
   @override
   $Res call({
-    Object count = freezed,
+    Object selectedIndex = freezed,
   }) {
     return _then(_FooterState(
-      count: count == freezed ? _value.count : count as int,
+      selectedIndex: selectedIndex == freezed
+          ? _value.selectedIndex
+          : selectedIndex as int,
     ));
   }
 }
 
 @JsonSerializable()
 class _$_FooterState with DiagnosticableTreeMixin implements _FooterState {
-  const _$_FooterState({this.count = 0}) : assert(count != null);
+  const _$_FooterState({this.selectedIndex = 1})
+      : assert(selectedIndex != null);
 
   factory _$_FooterState.fromJson(Map<String, dynamic> json) =>
       _$_$_FooterStateFromJson(json);
 
-  @JsonKey(defaultValue: 0)
+  @JsonKey(defaultValue: 1)
   @override
-  final int count;
+  final int selectedIndex;
 
   @override
   String toString({DiagnosticLevel minLevel = DiagnosticLevel.info}) {
-    return 'FooterState(count: $count)';
+    return 'FooterState(selectedIndex: $selectedIndex)';
   }
 
   @override
@@ -105,20 +110,21 @@ class _$_FooterState with DiagnosticableTreeMixin implements _FooterState {
     super.debugFillProperties(properties);
     properties
       ..add(DiagnosticsProperty('type', 'FooterState'))
-      ..add(DiagnosticsProperty('count', count));
+      ..add(DiagnosticsProperty('selectedIndex', selectedIndex));
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other is _FooterState &&
-            (identical(other.count, count) ||
-                const DeepCollectionEquality().equals(other.count, count)));
+            (identical(other.selectedIndex, selectedIndex) ||
+                const DeepCollectionEquality()
+                    .equals(other.selectedIndex, selectedIndex)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(count);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(selectedIndex);
 
   @override
   _$FooterStateCopyWith<_FooterState> get copyWith =>
@@ -131,13 +137,13 @@ class _$_FooterState with DiagnosticableTreeMixin implements _FooterState {
 }
 
 abstract class _FooterState implements FooterState {
-  const factory _FooterState({int count}) = _$_FooterState;
+  const factory _FooterState({int selectedIndex}) = _$_FooterState;
 
   factory _FooterState.fromJson(Map<String, dynamic> json) =
       _$_FooterState.fromJson;
 
   @override
-  int get count;
+  int get selectedIndex;
   @override
   _$FooterStateCopyWith<_FooterState> get copyWith;
 }

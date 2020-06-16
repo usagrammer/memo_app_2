@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_icons:
-  provider:
+  provider: 4.1.0-dev+2
   flutter_slidable: "^0.5.4"
   state_notifier: ^0.4.0
   flutter_state_notifier: ^0.3.0

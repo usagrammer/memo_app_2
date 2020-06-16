@@ -8,11 +8,11 @@ part of 'footer_state.dart';
 
 _$_FooterState _$_$_FooterStateFromJson(Map<String, dynamic> json) {
   return _$_FooterState(
-    count: json['count'] as int ?? 0,
+    selectedIndex: json['selectedIndex'] as int ?? 1,
   );
 }
 
 Map<String, dynamic> _$_$_FooterStateToJson(_$_FooterState instance) =>
     <String, dynamic>{
-      'count': instance.count,
+      'selectedIndex': instance.selectedIndex,
     };
